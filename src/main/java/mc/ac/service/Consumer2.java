@@ -1,7 +1,9 @@
 package mc.ac.service;
 
 import org.springframework.jms.annotation.JmsListener;
+import org.springframework.stereotype.Component;
 
+@Component
 public class Consumer2 {
 
     @JmsListener(destination = "test2.queue")
