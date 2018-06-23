@@ -23,7 +23,6 @@ public class Consumer {
     public String receiveQueue(Map map) {
         try {
             System.out.println(map.get("queueName"));
-//            Map map = (Map)message.getObject();
             return "【处理完毕:" + map.get("queueName")+"】";
         } catch (Exception e) {
             return null;
