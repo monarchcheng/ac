@@ -24,7 +24,7 @@ public class AcTest {
         for(int i=0; i<100; i++){
             Map map = new HashMap();
             map.put("queueName","consume1 message--"+i);
-            producer.sendMessage("test1.queue", map);
+            producer.sendMessage("test1.queue.map", map);
 //            producer.sendMessage("test2.queue", "consume2 message--"+i);
         }
     }
