@@ -21,11 +21,13 @@ public class AcTest {
 
     @Test
     public void contextLoads() throws InterruptedException {
-        for(int i=0; i<100; i++){
+        int i = 0;
+        while (i >= 0) {
             Map map = new HashMap();
-            map.put("queueName","consume1 message--"+i);
+            map.put("queueName", "consume1 message--" + i);
             producer.sendMessage("test1.queue.map", map);
 //            producer.sendMessage("test2.queue", "consume2 message--"+i);
+            i--;
         }
     }
 

@@ -1,10 +1,13 @@
 package mc.ac.service;
 
+import org.apache.activemq.Message;
 import org.apache.activemq.command.ActiveMQMapMessage;
+import org.apache.activemq.command.ActiveMQMessage;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Component;
 
+import javax.jms.ObjectMessage;
 import java.util.Map;
 
 @Component
@@ -17,13 +20,15 @@ public class Consumer {
 
     @JmsListener(destination = "test1.queue.map")
     @SendTo("back.queue")
-    public String receiveQueue(ActiveMQMapMessage message) {
+    public String receiveQueue(Map map) {
         try {
-            Map map = message.getContentMap();
+            System.out.println(map.get("queueName"));
+//            Map map = (Map)message.getObject();
             return "【处理完毕:" + map.get("queueName")+"】";
         } catch (Exception e) {
-           return null;
+            return null;
         }
 
     }
+
 }
