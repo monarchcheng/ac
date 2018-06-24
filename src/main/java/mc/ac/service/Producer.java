@@ -9,11 +9,19 @@ import javax.print.attribute.standard.Destination;
 
 @Service("producer")
 public class Producer {
-    @Autowired // 也可以注入JmsTemplate，JmsMessagingTemplate对JmsTemplate进行了封装
+
+
     private JmsMessagingTemplate jmsTemplate;
+    @Autowired
+    public Producer(JmsMessagingTemplate jmsTemplate) {
+        this.jmsTemplate = jmsTemplate;
+    }
+
+
+
     // 发送消息，destination是发送到的队列，message是待发送的消息
     public void sendMessage(String destinationName, String message){
-        jmsTemplate.convertAndSend(destinationName,new Object());
+        jmsTemplate.convertAndSend(destinationName,message);
     }
 
     public void sendMessage(String destinationName, Object o){
@@ -21,7 +29,7 @@ public class Producer {
     }
 
 
-    @JmsListener(destination="back.queue")
+    @JmsListener(destination="back.queue.string")
     public void consumerMessage(String text){
         System.out.println("从out.queue队列收到的回复报文为:"+text);
     }

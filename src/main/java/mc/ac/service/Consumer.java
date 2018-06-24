@@ -14,12 +14,14 @@ import java.util.Map;
 public class Consumer {
 
     @JmsListener(destination = "test1.queue.string")
-    public void receiveQueue(String text) {
+    @SendTo("back.queue.string")
+    public String receiveQueue(String text) {
         System.out.println("Consumer收到的报文为:"+text);
+        return "【处理完毕:" + text+"】";
     }
 
     @JmsListener(destination = "test1.queue.map")
-    @SendTo("back.queue")
+    @SendTo("back.queue.map")
     public String receiveQueue(Map map) {
         try {
             System.out.println(map.get("queueName"));
