@@ -1,13 +1,9 @@
 package mc.ac.service;
 
-import org.apache.activemq.Message;
-import org.apache.activemq.command.ActiveMQMapMessage;
-import org.apache.activemq.command.ActiveMQMessage;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Component;
 
-import javax.jms.ObjectMessage;
 import java.util.Map;
 
 @Component
