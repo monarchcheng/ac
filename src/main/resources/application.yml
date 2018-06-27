@@ -8,3 +8,11 @@ spring:
     in-memory: true
     pool:
       enabled: false
+  application:
+    name: ac-server
+eureka:
+  client:
+    service-url:
+          defaultZone: http://localhost:8000/eureka/
+  instance:
+    ip-address: true
